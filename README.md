@@ -36,7 +36,7 @@ Roman-style script — Nôm literacy gradually died out.
 ## Contents:
 
 - Dictionary: [NomFoundation.org](http://nomfoundation.org)
-- Order: [Remembering the Kanji](www.amazon.com/dp/0824835921)
+- Order: [Remembering the Kanji](http://www.amazon.com/dp/0824835921)
 - Strokes: [KanjiVG](http://kanjivg.tagaini.net) + [DMAK](https://github.com/mbilbille/dmak)
 
 ## Result:
