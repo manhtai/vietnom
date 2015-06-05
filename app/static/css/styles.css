@@ -1,0 +1,57 @@
+ul.posts {
+    list-style-type: none;
+    padding: 0px;
+    margin: 16px 0px 20px 0px;
+}
+ul.posts li.post {
+    line-height: 1em;
+}
+.post-date {
+    font-size: 10px;
+    padding: 5px;
+}
+div.post-author {
+    padding: 5px;
+}
+.post-vote {
+    float: right:
+}
+.post-footer {
+    float: right;
+}
+div.pagination {
+    width: 100%;
+    padding: 0px;
+    text-align: right;
+    margin: 0 auto;
+}
+div.flask-pagedown-preview {
+    margin: 10px 0px 10px 0px;
+    padding: 4px;
+}
+div.flask-pagedown-preview h1 {
+    font-size: 100%;
+    font-weight: normal;
+}
+div.flask-pagedown-preview h2 {
+    font-size: 100%;
+    font-weight: normal;
+}
+div.flask-pagedown-preview h3 {
+    font-size: 100%;
+    font-weight: normal;
+}
+#flask-pagedown-story {
+    min-height: 177px;
+}
+.well {
+    min-height: 70px;
+}
+.nom-index {
+    margin: 4px;
+}
+.page-header {
+    padding-bottom: 9px;
+    margin: 0px 0px 0px;
+    border-bottom: 1px solid #EEE;
+}

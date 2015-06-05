@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% import "_macros.html" as macros %}
+{% block title %}{{ _('Những chữ Nôm hiện có') }} - Việt Nôm{% endblock %}
+
+{% block page_content %}
+<div class="col-md-8 col-md-offset-2">
+    {% for nom in noms %}
+    <a href="{{ url_for('.nom_view', id=nom.id) }}">
+        <button class="btn btn-default btn-lg nom-index">{{ nom.character }}</button>
+    </a>
+    {% endfor %}
+    {% if pagination %}
+    <div class="text-center">
+        {{ macros.pagination_widget(pagination, '.nom_index') }}
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

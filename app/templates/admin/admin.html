@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}{{ _('Quản trị') }} - Việt Nôm{% endblock %}
+
+{% block page_content %}
+<div class="col-md-3">
+<div class="panel panel-default">
+    <div class="panel-heading">{{ _('Người dùng') }}</div>
+    <ul class="list-group">
+        <a class="list-group-item {{ "list-group-item-danger" if selection.number == 1 }}">
+            {{ _("Sửa hồ sơ") }}
+        </a>
+    </ul>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">{{ _('Chữ Nôm') }}</div>
+    <ul class="list-group">
+        <a class="list-group-item {{ "list-group-item-danger" if selection.number == 3 }}">
+            {{ _("Sửa chữ Nôm") }}
+        </a>
+        <a href="{{ url_for('admin.add_nom') }}" class="list-group-item
+            {{ "list-group-item-danger" if selection.number == 0 }}">
+            {{ _("Thêm chữ Nôm") }}
+        </a>
+        <a href="{{ url_for('admin.export_search') }}" class="list-group-item">
+            {{ _("Tải xuống search.js") }}
+        </a>
+    </ul>
+</div>
+</div>
+
+<div class="col-md-7">
+    <div class="panel panel-default">
+        <div class="panel-heading">{{ selection.text }}</div>
+        <div class="panel-body">
+            <div class="col-md-6">
+                {{ wtf.quick_form(form) }}
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock %}

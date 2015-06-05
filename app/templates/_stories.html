@@ -1,0 +1,27 @@
+{% for post in posts %}
+{% if post.story %}
+<ul class="posts">
+    <li class="post" id="{{ post.id }}">
+        <div class="post-content">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">
+                        <a href="{{ url_for('main.nom_view', id=post.nom.id) }}">
+                            {{ post.nom.character }}
+                            <span class="pull-right">{{ post.keyword }}</span>
+                        </a>
+                    </h1>
+                </div>
+                <div class="panel-body">
+                    {% if post.story_html %}
+                        {{ post.story_html | safe }}
+                    {% else %}
+                        {{ post.story }}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+{% endif %}
+{% endfor %}

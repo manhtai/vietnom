@@ -1,0 +1,11 @@
+Chào {{ user.username }},
+
+Để xác nhận địa chỉ email mới của bạn trên Việt Nôm, nhấp vào liên kết dưới đây:
+
+{{ url_for('settings.change_email', token=token, _external=True) }}
+
+Trân trọng,
+
+Nhóm Việt Nôm,
+
+Lưu ý: Vui lòng không trả lời email này.

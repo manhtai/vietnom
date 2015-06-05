@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% import "_macros.html" as macros %}
+{% block title %}{{ nom.character }}  "{{ my_post.keyword if my_post.keyword else nom.keyword }}"
+- Việt Nôm
+{% endblock %}
+
+{% block page_content %}
+<div class="col-md-3">
+    <div id="kanjiViewer text-center">
+        <div id="sample-btn">
+            <nav>
+            <ul class="pager">
+                <li class="previous">
+                    <a href="{{ nom.id - 1 if nom.id > 1 else nom.count }}">
+                        <span aria-hidden="true">{{ _('Trước') }}</span></a>
+                </li>
+                <li id="replay">
+                    <a href="#replay"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span></a>
+                </li>
+                <li class="next"><a href="{{ nom.id + 1 if nom.id < nom.count else 1 }}">
+                        <span aria-hidden="true">{{ _('Tiếp') }}</span></a>
+                </li>
+            </ul>
+            </nav>
+        </div>
+        <div id="draw"></div>
+    </div>
+    <div id="search-box">
+        <div class="input-group">
+        <input id="search-query" type="search" class="form-control input-sm" 
+        placeholder="{{ _('Tìm theo từ khóa...') }}">
+        <span class="input-group-btn">
+            <button class="btn btn-default btn-sm" type="button" id="clear">{{ _('Xóa')}}</button>
+        </span>
+        </div>
+        <div id="search-results" style="display: none;">
+            <div class="entries"></div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-7">
+    <div class="page-header">
+        <h2>{{ my_post.keyword if my_post.keyword else nom.keyword }}
+            <span class="pull-right"><a href="{{ url_for('.edit_post', id=nom.id) }}">
+                    <button class="btn btn-success">{{ _('Chỉnh sửa') }}</button></a>
+            </span>
+            {% if current_user.is_administrator() %}
+            <small>
+                <a href="{{ url_for('admin.edit_nom', id=nom.id) }}">
+                    <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
+                </a>
+            </small>
+            {% endif %}
+        </h2>
+    </div>
+    <div class="well post-body">
+        {% if my_post.story_html %}
+            {{ my_post.story_html | safe }}
+        {% else %}
+            {{ my_post.story }}
+        {% endif %}
+    </div>
+    <div class="panel panel-success">
+        <div class="panel-body post-body"><h4>{{ nom.character}}
+                &nbsp;
+                <small>{{ nom.meaning }}
+                &nbsp;
+                <a href="http://nomfoundation.org/common/vnom_details.php?codepoint={{ nom.ucn_code }}"
+                    target="_blank">
+                <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span></a>
+                </small>
+            </h4>
+        </div>
+    </div>
+    <div class="posts">
+        {% include '_posts.html' %}
+    </div>
+    <div class="pagination">
+        {% if pagination %}
+            {{ macros.pagination_widget(pagination, '.nom_view', id=nom.id) }}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+  <script type="text/javascript" src="{{ url_for('static', filename='js/dmak.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/raphael-min.js') }}"></script>
+  <script>
+    var dmak = new Dmak('{{ nom.character }}', {'element': "draw"});
+    var g = document.getElementById("replay");
+    g.onclick = function () {
+      dmak.erase();
+      setTimeout(function () {
+          dmak.render()}, 1500);
+    };
+  </script>
+
+
+  <script type="text/javascript" src="{{ url_for('static', filename='js/lunr.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/search.js') }}"></script>
+
+{% endblock %}

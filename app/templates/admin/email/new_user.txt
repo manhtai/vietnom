@@ -1,0 +1,1 @@
+Người dùng {{ user.username }} vừa gia nhập Việt Nôm.

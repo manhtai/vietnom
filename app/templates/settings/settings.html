@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}{{ _('Cài đặt') }} - Việt Nôm{% endblock %}
+
+{% block page_content %}
+<div class="col-md-3">
+
+<div class="panel panel-default">
+    <div class="panel-heading">{{ _('Cài đặt') }}</div>
+    <ul class="list-group">
+        <a href="{{ url_for('settings.edit_profile') }}" class="list-group-item 
+            {{ 'list-group-item-info' if selection.number == 1 }}">
+            {{ _("Chỉnh sửa hồ sơ") }}
+        </a>
+        <a href="{{ url_for('settings.change_password') }}" class="list-group-item 
+            {{ 'list-group-item-info' if selection.number == 3 }}" id="change-password">
+            {{ _("Thay đổi mật khẩu") }}
+        </a>
+        <a href="{{ url_for('settings.change_email_request') }}" class="list-group-item 
+            {{ 'list-group-item-info' if selection.number == 4 }}" id="change-email">
+            {{ _("Thay đổi email") }}
+        </a>
+    </ul>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">{{ _('Tiện ích') }}</div>
+    <ul class="list-group">
+        <a href="{{ url_for('settings.contact') }}" class="list-group-item
+            {{ 'list-group-item-info' if selection.number == 5 }}">
+            {{ _("Yêu cầu hoặc báo lỗi") }}
+        </a>
+        <a href="{{ url_for('main.export_csv') }}" class="list-group-item">
+            {{ _("Xuất dữ liệu (CSV)") }}
+        </a>
+    </ul>
+</div>
+
+</div>
+
+<div class="col-md-7">
+    <div class="panel panel-default">
+        <div class="panel-heading">{{ selection.text }}</div>
+        <div class="panel-body">
+            <div class="col-md-6">
+                {{ wtf.quick_form(form) }}
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock %}

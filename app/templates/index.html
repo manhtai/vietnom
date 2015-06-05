@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _('Trang chủ') }} - Việt Nôm{% endblock %}
+
+{% block page_content %}
+<div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-success">
+        <div class="panel-body">
+            {% filter markdown %}
+
+### Chữ Nôm là gì?
+
+Chữ Nôm là cách viết biểu ý ngày xưa của tiếng Việt. 
+
+Sau khi Việt Nam thoát khỏi ách đô hộ của Trung Quốc vào năm 939, 
+chữ Nôm lần đầu tiên thành chữ quốc ngữ để diễn đạt tiếng Việt qua mẫu tự biểu ý. 
+
+Từ đó tới hơn 1.000 năm sau, một phần lớn các tài liệu văn học, triết học, sử học, 
+luật pháp, y khoa, tôn giáo và hành chánh của Việt Nam đều được viết bằng chữ Nôm. 
+
+Sau khi chữ quốc ngữ được phổ biến vào đầu thế kỷ 20, chữ Nôm dần dần mai một. 
+
+**Di sản này hiện nay có nguy cơ tiêu vong.**
+
+### Chữ Nôm khác gì chữ Hán?
+
+Những văn bản dùng chữ Nôm thường là bản **Quốc âm**, tức là khi đọc lên là ra tiếng Việt, 
+không cần phải giải nghĩa từ chữ Nho (tức chữ Hán).
+
+Nếu người Nhật mượn chữ Hán để tạo nên Kanji, thì người Việt mượn chữ Hán để tạo ra chữ Nôm.
+
+Có điều người Nhật vẫn đang dùng Kanji, người Việt thì không còn dùng chữ Nôm.
+
+
+### Phương pháp kể chuyện là gì?
+
+Phương pháp kể chuyện là một _phương pháp nhớ_ bằng cách kết nối các vật hoặc sự kiện lại với nhau bằng một câu chuyện dễ nhớ để miêu tả chúng.
+
+Phương pháp này có thế mạnh trong việc nhớ các đối tượng hay sự kiện được sắp xếp theo **thứ tự** bởi bản chất xuôi chiều của câu chuyện.
+
+
+### Nhớ thứ tự thì liên quan gì đến việc nhớ chữ Nôm?
+
+Vì chữ Nôm, cũng giống như chữ Hán, cần phải viết các nét theo đúng thứ tự.
+
+            {% endfilter %}
+        </div>
+    </div>
+</div>
+{% endblock %}

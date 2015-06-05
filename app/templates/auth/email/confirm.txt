@@ -1,0 +1,13 @@
+Chào {{ user.username }},
+
+Chào mừng bạn đến với Việt Nôm!
+
+Để xác nhận địa chỉ email của bạn, vui lòng nhấp vào liên kết sau:
+
+{{ url_for('auth.confirm', token=token, _external=True) }}
+
+Trân trọng,
+
+Nhóm Việt Nôm,
+
+Lưu ý: Vui lòng không trả lời email này.

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}{{ _('Tài khoản chưa xác nhận') }} - Việt Nôm{% endblock %}
+
+{% block page_content %}
+<div class="col-md-6 col-md-offset-3">
+<div class="page-header">
+    <h1>
+        {{ _('Xin chào') }}, {{ current_user.username }}!
+    </h1>
+</div>
+    <h3>{{ _('Bạn chưa xác nhận địa chỉ email đăng ký.') }}</h3>
+    <p>
+        {{ _('Để sử dụng các tính năng của trang web, xin vui lòng xác nhận địa chỉ email của bạn') }}
+    </p>
+    <p>
+        {{ _('Bạn cần một thư xác nhận khác?')}}
+        <a href="{{ url_for('auth.resend_confirmation') }}">{{ _('Nhấp vào đây.') }}</a>
+    </p>
+</div>
+{% endblock %}

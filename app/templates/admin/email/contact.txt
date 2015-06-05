@@ -1,0 +1,5 @@
+
+{{ body }}
+
+--
+Thư của {{ user.username }}, gửi từ Việt Nôm.

@@ -1,0 +1,53 @@
+{% for post in posts %}
+{% if post.story and (post.author.enabled or post.author==current_user) %}
+<ul class="posts">
+    <li class="post" id="{{ post.id }}">
+        <div class="post-content">
+            <div class="post-author">
+                <a href="{{ url_for('.user', username=post.author.username) }}">
+                    {{ post.author.username }}
+                </a>
+                <span class="post-date">
+                    {{ moment(post.timestamp).format('DD/MM/YYYY') }}
+                </span>
+                <span class="post-vote">
+                    <a href="{{ url_for('.vote_post', id=post.id, vote='up') }}">
+                    <button type="button" class=
+                        {% if current_user.is_up(post) %}"btn btn-xs"
+                        {% else %}"btn btn-default btn-xs"{% endif %}>
+                        {{ "" if post.up_count() == 0 else post.up_count() }}
+                        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                    </button>
+                    </a>
+                    <a href="{{ url_for('.vote_post', id=post.id, vote='down') }}">
+                    <button type="button" class=
+                        {% if current_user.is_down(post) %}"btn btn-xs"
+                        {% else %}"btn btn-default btn-xs"{% endif %}>
+                        {{ "" if post.down_count() == 0 else post.down_count() }} 
+                        <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+                    </button>
+                    </a>
+                </span>
+                <span class="post-footer">
+                {% if current_user.id != post.author.id %}
+                <a href="{{ url_for('.copy_post', id=post.id) }}">
+                <button type="button" class="btn btn-default btn-xs">
+                    <span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span>
+                </button>
+                </a>
+                {% endif %}
+                </span>
+            </div>
+            <div class="post-body panel panel-default panel-body">
+                {% if post.story_html %}
+                    {{ post.story_html | safe }}
+                {% else %}
+                    {{ post.story }}
+                {% endif %}
+            </div>
+            
+        </div>
+    </li>
+</ul>
+{% endif %}
+{% endfor %}
